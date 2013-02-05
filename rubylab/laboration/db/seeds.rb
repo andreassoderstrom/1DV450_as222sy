@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+u1 = User.create(:first_name => "Andreas",
+	:last_name => "Soderstrom",
+	:email => "andreas@200ok.se",
+	:password => "1bral0senord")
+
+p1 = Project.create(:name => "Laboration 1",
+ :description => "Testing Ruby on rails!",
+ :start_date => DateTime.new(2013,2,2,10),
+  :end_date => DateTime.new(2013,2,12,10),
+   :owner_id => 1  )
