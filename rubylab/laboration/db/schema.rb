@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(:version => 20130205115624) do
 
   create_table "projects", :force => true do |t|
-    t.integer  "users_id"
     t.string   "name",        :limit => 50
     t.string   "description", :limit => 500
     t.datetime "start_date"
@@ -36,9 +35,6 @@ ActiveRecord::Schema.define(:version => 20130205115624) do
     t.integer  "statuses_id"
     t.string   "name",        :limit => 50
     t.string   "description", :limit => 500
-    t.integer  "project_id"
-    t.integer  "status_id"
-    t.integer  "owner_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
