@@ -16,3 +16,6 @@ p1 = Project.create(:name => "Laboration 1",
  :start_date => DateTime.new(2013,2,2,10),
   :end_date => DateTime.new(2013,2,12,10),
    :owner_id => 1  )
+
+s1 = Status.create(:status_name => "Bug")
+s1 = Status.create(:status_name => "Fix")

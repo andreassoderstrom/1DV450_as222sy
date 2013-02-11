@@ -1,6 +1,5 @@
 <h1> All projects </h1>
 
-<%= @projects.each do |p| %>
-	<% p.name %>
-	
-<%end %>
+<% @projects.each do |link| %>
+	<%= link_to link.name, link %><br />
+<% end %>

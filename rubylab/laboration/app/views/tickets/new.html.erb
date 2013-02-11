@@ -1,0 +1,11 @@
+<h1> Ny ticket! </h1>
+
+<%= form_for @ticket do |t| %>
+	<%= t.label :name %>
+	<%= t.text_field :name %>
+	<%= t.label :description %>
+	<%= t.text_field :description %> 
+	<%= t.select :statuses_id, options_from_collection_for_select(Status.all, :id, :status_name) %>
+	<%= t.submit "Skapa ticket" %>
+
+<% end %>
