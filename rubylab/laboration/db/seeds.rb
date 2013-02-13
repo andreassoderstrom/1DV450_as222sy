@@ -9,7 +9,7 @@
 u1 = User.create(:first_name => "Andreas",
 	:last_name => "Soderstrom",
 	:email => "andreas@200ok.se",
-	:password => "1bral0senord")
+	:password => "1bralosen")
 
 p1 = Project.create(:name => "Laboration 1",
  :description => "Testing Ruby on rails!",

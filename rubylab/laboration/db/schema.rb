@@ -47,12 +47,13 @@ ActiveRecord::Schema.define(:version => 20130206130241) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name", :limit => 50
-    t.string   "last_name",  :limit => 50
-    t.string   "email",                    :default => "", :null => false
+    t.string   "first_name",      :limit => 50
+    t.string   "last_name",       :limit => 50
+    t.string   "email",                         :default => "", :null => false
     t.string   "password"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.string   "password_digest"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
 end

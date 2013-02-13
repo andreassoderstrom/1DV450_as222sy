@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string "last_name", :limit => 50
       t.string "email", :default => "", :null => false
       t.string "password"
+      t.string "password_digest"
       t.timestamps
     end
   end
