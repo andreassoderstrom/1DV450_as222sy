@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(:version => 20130206130241) do
   end
 
   create_table "tickets", :force => true do |t|
-    t.integer  "users_id"
-    t.integer  "projects_id"
-    t.integer  "statuses_id"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "status_id"
     t.string   "name",        :limit => 50
     t.string   "description", :limit => 500
     t.datetime "created_at",                 :null => false

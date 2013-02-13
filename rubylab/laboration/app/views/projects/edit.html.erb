@@ -1,4 +1,4 @@
-<h1> Nytt projekt! </h1>
+<h2> Redigera: <%= @project.name %> </h2>
 
 <%= form_for @project do |p| %>
 	<%= p.label :name %>
@@ -9,7 +9,7 @@
 	<%= p.date_select :start_date %>
 	<%= p.label :end_date %>
 	<%= p.date_select :end_date %>
-	<%= p.submit "Skapa projekt" %>
+	<%= p.submit "Redigera projekt" %>
 
 <% end %>
 

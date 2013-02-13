@@ -6,6 +6,8 @@ end
 
 def show
 	@project = Project.find(params[:id])
+	@tickets = Project.find(params[:id]).tickets
+	session[:project_id] = params[:id]
 end
 
 def new
@@ -19,6 +21,27 @@ def create
 	else
 		render :action => "new"
 	end
+end
+
+def edit
+	@project = Project.find(params[:id])
+end
+
+def update
+		
+		@project = Project.find(params[:id])
+		
+		if @project.update_attributes(params[:project])
+			redirect_to projects_path
+		else
+			render :action => "edit"
+		end
+end
+
+def destroy
+		@project = Project.find(params[:id])
+		@project.destroy
+		redirect_to projects_path
 end
 
 

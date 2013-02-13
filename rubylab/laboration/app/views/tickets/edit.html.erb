@@ -1,4 +1,4 @@
-<h1> Ny ticket! </h1>
+<h2> Redigera <%= @ticket.name %> </h2>
 
 <%= form_for @ticket do |t| %>
 	<%= t.label :name %>
@@ -6,6 +6,6 @@
 	<%= t.label :description %>
 	<%= t.text_field :description %> 
 	<%= t.select :status_id, options_from_collection_for_select(Status.all, :id, :status_name) %>
-	<%= t.submit "Skapa ticket" %>
+	<%= t.submit "Uppdatera ticket" %>
 
 <% end %>
