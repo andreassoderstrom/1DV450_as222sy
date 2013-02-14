@@ -10,6 +10,14 @@ u1 = User.create(:first_name => "Andreas",
 	:last_name => "Soderstrom",
 	:email => "andreas@200ok.se",
 	:password => "1bralosen")
+u2 = User.create(:first_name => "Isak",
+	:last_name => "Utebard",
+	:email => "isak@200ok.se",
+	:password => "1bralosen")
+u2 = User.create(:first_name => "Christofer",
+	:last_name => "Olajsson",
+	:email => "Christofer@200ok.se",
+	:password => "1bralosen")
 
 p1 = Project.create(:name => "Laboration 1",
  :description => "Testing Ruby on rails!",

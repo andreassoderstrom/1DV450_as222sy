@@ -9,6 +9,17 @@
 	<%= p.date_select :start_date %>
 	<%= p.label :end_date %>
 	<%= p.date_select :end_date %>
+
+	<p>
+		<% @users.each do |u| %>
+          <p>
+            <%= check_box_tag 'user_ids[]', u.id, u.projects.include?(@project) %>
+            <%= "#{u.first_name} #{u.last_name}" %>
+          </p>
+        <% end %>
+	</p>
+
+	
 	<%= p.submit "Redigera projekt" %>
 
 <% end %>

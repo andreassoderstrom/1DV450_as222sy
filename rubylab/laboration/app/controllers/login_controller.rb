@@ -7,7 +7,7 @@ def create
 		session[:user_id] = user.id
 		redirect_to home_index_path
 	else
-		redirect_to root_path
+		redirect_to :root
 	end
 end
 

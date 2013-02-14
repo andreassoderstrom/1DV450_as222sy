@@ -6,6 +6,15 @@
 <%= @project.start_date %> <br/>
 <%= @project.end_date %> <br/>
 
+<h4> Users </h4>
+
+<% @users.each do |u| %>
+          <p>
+           
+            <%= "#{u.first_name} #{u.last_name}" %>
+          </p>
+<% end %>
+
 <h4> Tickets </h4>
 
 <p>

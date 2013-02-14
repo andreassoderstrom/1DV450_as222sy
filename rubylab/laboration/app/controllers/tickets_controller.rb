@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-	
+	before_filter :authenticate
 	def index
 		@tickets = Ticket.all
 	end
