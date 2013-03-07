@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
 	before_filter :authenticate
+	before_filter :is_ticket_owner, only: [ :edit, :destroy, :update]
+	before_filter :member_ticket, only: [:show, :new ]
 	def index
 		@tickets = Ticket.all
 	end
@@ -18,9 +20,12 @@ class TicketsController < ApplicationController
 	end
 
 	def create
+
 		@ticket = Ticket.new(params[:ticket])
-		@ticket.project_id = session[:project_id]
+		@ticket.user_id = session[:user_id]
+		@ticket.project_id = params[:project_id] #fix fix fix
 		@project = Project.find(@ticket.project_id)
+
 		if @ticket.save
 			redirect_to project_path(@project)
 		else

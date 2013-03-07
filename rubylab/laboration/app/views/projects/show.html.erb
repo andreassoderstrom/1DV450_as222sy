@@ -25,9 +25,12 @@
 <% end %>
 </p>
 
-<%= link_to "Lägg till en ticket", @project.id.to_s + new_ticket_path %> <br/>
-<%= link_to "Redigera Projekt", edit_project_path %> <br/>
+<%= link_to "Add ticket", @project.id.to_s + new_ticket_path, :class => "btn" %>
 
-<%= link_to 'X', project_path(@project), :confirm => 'Eru säker?', :method => :delete, :class => "btn btn-danger" %> <br/>
+<% if session[:user_id] == @project.owner_id %>
+	<%= link_to "Edit Project", edit_project_path, :class => "btn btn-info" %> 
 
-<%= link_to "Tillbaka", projects_path %>
+	<%= link_to 'X', project_path(@project), :confirm => 'Do you really want to delete this project?', :method => :delete, :class => "btn btn-danger" %> <br/>
+<% end %> <br/>
+
+<%= link_to "Back", projects_path %>

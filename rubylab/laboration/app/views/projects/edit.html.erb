@@ -1,6 +1,15 @@
 <h2> Redigera: <%= @project.name %> </h2>
 
 <%= form_for @project do |p| %>
+
+	<% if @project.errors.any? %>
+	<ul>
+	<% @project.errors.full_messages.each do |m| %>
+			<li class="formError"><%= m %></li>
+	<% end %>
+	</ul>
+	<%end %>
+
 	<%= p.label :name %>
 	<%= p.text_field :name %> 
 	<%= p.label :description %>
@@ -20,8 +29,8 @@
 	</p>
 
 	
-	<%= p.submit "Redigera projekt" %>
+	<%= p.submit "Edit project" %>
 
 <% end %>
 
-<%= link_to "Tillbaka", projects_path %>
+<%= link_to "Back", project_path %>

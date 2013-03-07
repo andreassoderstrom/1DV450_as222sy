@@ -1,0 +1,16 @@
+{% extends "shared/base.html" %}
+
+{% block title %}
+	Add ticket
+{% endblock %}
+
+<h1> Add a project </h1>
+{% block content %}
+	<form action="{{ticket_add}}" method="POST"> {% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Add ticket" />
+	</form>
+
+
+	
+{% endblock %}

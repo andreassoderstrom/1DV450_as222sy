@@ -1,5 +1,14 @@
 <h1> Ny ticket! </h1>
 
+<% if @ticket.errors.any? %>
+	<ul>
+	<% @ticket.errors.full_messages.each do |m| %>
+			<li class="formError"><%= m %></li>
+	<% end %>
+	</ul>
+	<%end %>
+
+
 <%= form_for @ticket do |t| %>
 	<%= t.label :name %>
 	<%= t.text_field :name %>

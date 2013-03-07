@@ -1,0 +1,20 @@
+{% extends 'shared/base.html' %}
+
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<h1> Ticket: {{ticket.name}} </h1>
+
+<p>
+	{{ticket.description}}
+</p>
+
+<p>
+	{{status.status_name}}
+</p>
+
+
+
+{% endblock %}

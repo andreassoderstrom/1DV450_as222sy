@@ -1,27 +1,47 @@
 <h1> Nytt projekt! </h1>
 
 <%= form_for @project do |p| %>
-	<%= p.label :name %>
-	<%= p.text_field :name %> 
-	<%= p.label :description %>
-	<%= p.text_field :description %>
-	<%= p.label :start_date %>
-	<%= p.date_select :start_date %>
-	<%= p.label :end_date %>
-	<%= p.date_select :end_date %>
+
+<% if @project.errors.any? %>
+	<ul>
+	<% @project.errors.full_messages.each do |m| %>
+			<li class="formError"><%= m %></li>
+	<% end %>
+	</ul>
+<%end %>
+
+<%= p.label :name %>
+<%= p.text_field :name %> 
+<%= p.label :description %>
+<%= p.text_field :description %>
+<%= p.label :start_date %>
+<%= p.date_select :start_date %>
+<%= p.label :end_date %>
+<%= p.date_select :end_date %>
+<p>
+	<% @users.each do |u| %>
+	
+	
 	<p>
-		<% @users.each do |u| %>
-          <p>
-            <%= check_box_tag 'user_ids[]', u.id, u.projects.include?(@project) %>
-            <%= "#{u.first_name} #{u.last_name}" %>
-          </p>
-        <% end %>
+		<% if u.id == session[:user_id] %>
+			<%= check_box_tag 'user_ids[]', u.id, 1 %>
+		<% else %>
+			<%= check_box_tag 'user_ids[]', u.id, u.projects.include?(@project) %>
+		<% end %>
+		
+
+
+		<%= "#{u.first_name} #{u.last_name}" %>
 	</p>
-	<%= p.submit "Skapa projekt" %>
+
+	<% end %>
+</p>
+<%= p.submit "Create project" %>
 
 <% end %>
 
 
 
 
-<%= link_to "Tillbaka", projects_path %>
+
+<%= link_to "Back", projects_path %>

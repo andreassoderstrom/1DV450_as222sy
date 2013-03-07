@@ -1,11 +1,23 @@
-<h2> Redigera <%= @ticket.name %> </h2>
+<h2> Edit <%= @ticket.name %> </h2>
+
+
 
 <%= form_for @ticket do |t| %>
+
+
+	<% if @ticket.errors.any? %>
+	<ul>
+	<% @ticket.errors.full_messages.each do |m| %>
+			<li class="formError"><%= m %></li>
+	<% end %>
+	</ul>
+	<%end %>
+
 	<%= t.label :name %>
 	<%= t.text_field :name %>
 	<%= t.label :description %>
 	<%= t.text_field :description %> 
 	<%= t.select :status_id, options_from_collection_for_select(Status.all, :id, :status_name) %>
-	<%= t.submit "Uppdatera ticket" %>
+	<%= t.submit "Update ticket" %>
 
 <% end %>

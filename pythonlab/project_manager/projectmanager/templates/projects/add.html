@@ -1,0 +1,13 @@
+{% extends "shared/base.html" %}
+
+{% block title %}
+	Add project
+{% endblock %}
+
+<h1> Add a project </h1>
+{% block content %}
+	<form action="{{project_add}}" method="POST"> {% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Add project" />
+	</form>
+{% endblock %}

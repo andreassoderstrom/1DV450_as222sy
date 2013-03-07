@@ -1,5 +1,28 @@
 <h1> All projects </h1>
 
-<% @projects.each do |link| %>
-	<%= link_to link.name, link %><br />
+<h4> Search for specific project </h4>
+<p>
+	<%= form_tag(projects_path, :method => :get, :class => 'project-search') do %>
+
+		    <%= text_field_tag :search, params[:search] %>
+		    <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+
+	<% end %>
+</p>
+
+<% if !@projects.blank? %>
+	<% @projects.each do |p| %>
+
+
+		<% if p.users.include?(@user) %>
+			<%= link_to p.name, p %> <br />
+		<% else %>
+			<%= p.name %> <br />
+		<% end %>
+
+		
+		
+	<% end %>
+<% else %>
+	<p> No projects found! <p/>
 <% end %>

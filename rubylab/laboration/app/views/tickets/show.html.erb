@@ -9,9 +9,17 @@
 </p>
 
 <p>
-<%= link_to "Redigera", edit_project_ticket_path %><br/>
-<%= link_to "Tillbaka", project_path(@project.id) %>
+<% if session[:user_id] == @ticket.user_id %>
+	<%= link_to "Edit", edit_project_ticket_path, :class => "btn btn-info" %>
+	<%= link_to 'X', project_ticket_path(@ticket.project_id, @ticket), :confirm => 'Eru säker?', :method => :delete, :class => "btn btn-danger" %>
+<% elsif session[:user_id] == @project.owner_id %>
+	<%= link_to "Edit", edit_project_ticket_path, :class => "btn btn-info" %>
+	<%= link_to 'X', project_ticket_path(@ticket.project_id, @ticket), :confirm => 'Eru säker?', :method => :delete, :class => "btn btn-danger" %>
+<% end  %>
+
 <br/>
-<%= link_to 'X', project_ticket_path(@ticket.project_id, @ticket), :confirm => 'Eru säker?', :method => :delete, :class => "btn btn-danger" %>
+<%= link_to "Back", project_path(@project.id) %>
+<br/>
+
 
 </p>
