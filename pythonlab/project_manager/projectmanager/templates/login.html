@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+
+
+{% block title %}
+	Log in please!
+{% endblock %}
+
+{% block content %}
+
+	<form class="form-signin" action="{{login_user}}" method="POST">{% csrf_token %}
+		<h2 class="form-signin-heading"> Sign in </h2>
+		{{form.as_p}}
+		<input type="submit" value="log in" />
+
+	</form>
+
+	
+{% endblock %}

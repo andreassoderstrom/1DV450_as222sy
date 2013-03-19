@@ -23,8 +23,8 @@
 
 	<p>
 		<a class="btn" href="{% url 'project_list' %}">Back </a>
-		<a class="btn btn-primary" href="#"> Update </a>
-		<a class="btn btn-danger" href="#"> Remove </a>
+		<a class="btn btn-primary" href="{% url 'project_edit' project.id %}"> Update </a>
+		<a class="btn btn-danger" href="{% url 'project_delete' project.id %}"> Remove </a>
 	</p>
 
 	

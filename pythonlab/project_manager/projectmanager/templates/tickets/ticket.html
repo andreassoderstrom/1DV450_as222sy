@@ -15,6 +15,12 @@
 	{{status.status_name}}
 </p>
 
+<p>
+		
+		<a class="btn btn-primary" href="{% url 'ticket_edit' ticket.project_id_id ticket.id %}"> Update </a>
+		<a class="btn btn-danger" href="{% url 'ticket_delete' ticket.project_id_id ticket.id  %}"> Remove </a>
+	</p>
+
 
 
 {% endblock %}

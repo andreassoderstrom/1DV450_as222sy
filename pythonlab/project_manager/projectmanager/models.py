@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+from django import forms
 
 class Project(models.Model):
 	name = models.CharField(max_length = 100)
@@ -13,6 +14,9 @@ class Project(models.Model):
 	def __unicode__(self):
 		return self.name
 
+
+	def owned_by(self, user):
+		return self.owner_id == user 
 
 
 
@@ -36,6 +40,9 @@ class Ticket(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	def owned_by(self, user):
+		return self.user_id == user 
+
 
 #forms ==========================
 class ProjectForm(ModelForm):
@@ -47,4 +54,10 @@ class TicketForm(ModelForm):
 	class Meta:
 		model = Ticket
 		exclude = ('project_id', 'user_id')
+
+
+#login
+class LoginForm(forms.Form):
+	username = forms.CharField(max_length=20)
+	password = forms.CharField(widget = forms.PasswordInput)
 #================================
