@@ -16,7 +16,10 @@ class Project(models.Model):
 
 
 	def owned_by(self, user):
-		return self.owner_id == user 
+		return self.owner_id == user
+
+	def is_member(self, user):
+		return self.users.filter(pk = user)
 
 
 
@@ -46,6 +49,10 @@ class Ticket(models.Model):
 
 #forms ==========================
 class ProjectForm(ModelForm):
+	def __init__(self, user_id, *args, **kwargs):
+		super(ProjectForm, self).__init__(*args, **kwargs)
+		self.fields['users'].queryset = \
+		User.objects.exclude(id = user_id)
 	class Meta:
 		model = Project
 		exclude = ('owner_id')

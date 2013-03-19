@@ -8,6 +8,11 @@
 {% block content %}
 	<h1> All projects </h1>
 
+	<form action"{{project_list}}" method="POST">{% csrf_token %}
+		<input name="search" type="text" placeholder="Search project" />
+		<input type="submit" value="Submit" />
+	</form>
+
 
 	<ul>
 	{% for project in projects %}
