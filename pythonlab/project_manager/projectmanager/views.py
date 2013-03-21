@@ -113,7 +113,8 @@ def ticket_edit(request, project_id = None, ticket_id = None):
 			if form.is_valid():
 				try:
 					form.save()
-					return HttpResponseRedirect("/projects/" + project_id + "/ticket/" + ticket_id)
+					return redirect('ticket' ,project_id ,ticket_id) #Faster better stronger 
+					#return HttpResponseRedirect("/projects/" + project_id + "/ticket/" + ticket_id)
 				except:
 					return HttpResponseServerError()
 		else:
@@ -132,7 +133,8 @@ def ticket_delete(request, project_id= None, ticket_id = None):
 
 	if ticket.owned_by(currentUser.id) or project.owned_by(currentUser.id):
 		ticket.delete()
-		return HttpResponseRedirect('/projects/%i/' % int(project_id))
+		return redirect('project', project_id) #woooo fixed!
+		#return HttpResponseRedirect('/projects/%i/' % int(project_id))
 	else:
 		return HttpResponse("You dont have permission yo")
 
@@ -151,7 +153,6 @@ def login_user(request):
 			if user is not None:
 				if user.is_active:
 					login(request, user)
-					request.session['has_logged_in'] = True
 					return redirect('project_list')
 				else:
 					return HttpResponse("<p> Your account is disabled!! </p>")
